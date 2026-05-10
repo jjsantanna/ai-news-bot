@@ -23,18 +23,20 @@ class RunConfig(BaseModel):
     variant_id: str
     description: str = ""
 
-    chunker: Literal["sentence", "paragraph", "semantic", "section"] = "paragraph"
+    chunker: Literal["fixed_token", "paragraph", "semantic", "section"] = "paragraph"
     chunker_params: dict[str, Any] = Field(default_factory=dict)
 
-    retriever: Literal["bm25", "dense", "hybrid", "none"] = "hybrid"
-    embedder: str | None = "bge-m3"
+    retriever: Literal["bm25", "dense", "hybrid", "rerank", "none"] = "hybrid"
+    embedder: str | None = "all-MiniLM-L6-v2"
     vector_db: Literal["chromadb"] = "chromadb"
     distance: Literal["cosine"] = "cosine"
     k: int = 5
     rerank: str | None = None
 
-    extractor: Literal["rag", "long_context", "map_reduce", "citations_api"] = "rag"
+    extractor: Literal["rag", "long_context", "mapreduce", "citations_rag"] = "rag"
+    provider: Literal["anthropic", "openai", "deepseek", "mistral", "ollama"] = "anthropic"
     llm: str = "claude-opus-4-7"
+    llm_params: dict[str, Any] = Field(default_factory=dict)
 
     validator_ladder: list[Literal["exact", "normalized", "fuzzy", "semantic"]] = Field(
         default_factory=lambda: ["exact", "normalized", "fuzzy"]
