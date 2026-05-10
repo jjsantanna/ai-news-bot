@@ -1,0 +1,24 @@
+variant_id: v_rag_hybrid_sonnet_rerank
+description: "Hybrid retrieval + cross-encoder rerank + Sonnet 4.6 — precision-tilted RAG"
+
+chunker: paragraph
+chunker_params:
+  target_tokens: 1000
+
+retriever: rerank
+embedder: all-MiniLM-L6-v2
+vector_db: chromadb
+distance: cosine
+k: 5
+rerank: BAAI/bge-reranker-base
+
+extractor: rag
+provider: anthropic
+llm: claude-sonnet-4-6
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

@@ -1,0 +1,21 @@
+variant_id: v_rag_bm25_haiku
+description: "RAG with BM25 + Haiku 4.5 — cheap baseline for the lexical-retrieval-only path"
+
+chunker: paragraph
+chunker_params:
+  target_tokens: 1000
+
+retriever: bm25
+embedder: null
+k: 5
+
+extractor: rag
+provider: anthropic
+llm: claude-haiku-4-5
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

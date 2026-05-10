@@ -1,0 +1,21 @@
+variant_id: v_rag_bm25_gpt4o_mini
+description: "RAG with BM25 + OpenAI gpt-4o-mini — cross-vendor cheap baseline"
+
+chunker: paragraph
+chunker_params:
+  target_tokens: 1000
+
+retriever: bm25
+embedder: null
+k: 5
+
+extractor: rag
+provider: openai
+llm: gpt-4o-mini
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

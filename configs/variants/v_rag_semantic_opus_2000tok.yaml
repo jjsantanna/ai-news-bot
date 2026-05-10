@@ -1,0 +1,23 @@
+variant_id: v_rag_semantic_opus_2000tok
+description: "RAG with semantic-similarity chunking + 2000-tok windows + Opus 4.7"
+
+chunker: semantic
+chunker_params:
+  target_tokens: 2000
+
+retriever: hybrid
+embedder: all-MiniLM-L6-v2
+vector_db: chromadb
+distance: cosine
+k: 5
+
+extractor: rag
+provider: anthropic
+llm: claude-opus-4-7
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

@@ -1,0 +1,23 @@
+variant_id: v_rag_hybrid_opus_k20
+description: "Hybrid retrieval at k=20 + Opus 4.7 — RAG-recall ceiling for the sweep"
+
+chunker: paragraph
+chunker_params:
+  target_tokens: 1000
+
+retriever: hybrid
+embedder: all-MiniLM-L6-v2
+vector_db: chromadb
+distance: cosine
+k: 20
+
+extractor: rag
+provider: anthropic
+llm: claude-opus-4-7
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

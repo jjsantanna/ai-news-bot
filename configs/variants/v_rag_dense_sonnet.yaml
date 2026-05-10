@@ -1,0 +1,23 @@
+variant_id: v_rag_dense_sonnet
+description: "RAG with sentence-transformer embeddings + Sonnet 4.6 — dense-only baseline"
+
+chunker: paragraph
+chunker_params:
+  target_tokens: 1000
+
+retriever: dense
+embedder: all-MiniLM-L6-v2
+vector_db: chromadb
+distance: cosine
+k: 5
+
+extractor: rag
+provider: anthropic
+llm: claude-sonnet-4-6
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

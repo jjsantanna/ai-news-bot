@@ -1,0 +1,21 @@
+variant_id: v_rag_bm25_ollama_llama31
+description: "RAG with BM25 + Ollama llama3.1:8b — local-only baseline (no API)"
+
+chunker: paragraph
+chunker_params:
+  target_tokens: 1000
+
+retriever: bm25
+embedder: null
+k: 5
+
+extractor: rag
+provider: ollama
+llm: llama3.1:8b
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

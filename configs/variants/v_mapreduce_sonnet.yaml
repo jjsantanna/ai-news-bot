@@ -1,0 +1,21 @@
+variant_id: v_mapreduce_sonnet
+description: "Map-reduce with paragraph chunks + Sonnet 4.6 — per-chunk LLM call, then pick best"
+
+chunker: paragraph
+chunker_params:
+  target_tokens: 2000
+
+retriever: none
+embedder: null
+k: 0
+
+extractor: mapreduce
+provider: anthropic
+llm: claude-sonnet-4-6
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

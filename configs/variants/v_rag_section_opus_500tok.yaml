@@ -1,0 +1,23 @@
+variant_id: v_rag_section_opus_500tok
+description: "RAG with heading-aware section chunking + small (500-tok) windows + Opus 4.7"
+
+chunker: section
+chunker_params:
+  target_tokens: 500
+
+retriever: hybrid
+embedder: all-MiniLM-L6-v2
+vector_db: chromadb
+distance: cosine
+k: 5
+
+extractor: rag
+provider: anthropic
+llm: claude-opus-4-7
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+
+seed: 42

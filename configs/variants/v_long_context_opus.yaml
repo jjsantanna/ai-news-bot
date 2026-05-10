@@ -1,0 +1,19 @@
+variant_id: v_long_context_opus
+description: "Long-context Opus 4.7 (1M ctx) — no retrieval, full corpus per call"
+
+chunker: paragraph
+retriever: none
+embedder: null
+k: 0
+
+extractor: long_context
+provider: anthropic
+llm: claude-opus-4-7
+
+validator_ladder:
+  - exact
+  - normalized
+  - fuzzy
+  - semantic
+
+seed: 42
